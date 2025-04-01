@@ -17,7 +17,7 @@ const mockArticles: Article[] = [
     source: { name: 'Tech Daily' },
     category: 'technology',
     url: 'https://example.com',
-    image:
+    imageUrl:
       'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80',
     publishedAt: '2024-03-10T10:00:00Z',
   },
@@ -29,7 +29,7 @@ const mockArticles: Article[] = [
     source: { name: 'World News' },
     category: 'politics',
     url: 'https://example.com',
-    image:
+    imageUrl:
       'https://images.unsplash.com/photo-1569163139599-0f4517e36f51?auto=format&fit=crop&q=80',
     publishedAt: '2024-03-09T15:30:00Z',
   },
@@ -41,7 +41,7 @@ const mockArticles: Article[] = [
     source: { name: 'Sports Central' },
     category: 'sports',
     url: 'https://example.com',
-    image:
+    imageUrl:
       'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&q=80',
     publishedAt: '2024-03-08T20:15:00Z',
   },

@@ -19,9 +19,9 @@ export function ArticleCard({
     return (
         <article className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
             {/* Display article image if available */}
-            {article.image && (
+            {article.imageUrl && (
                 <img
-                    src={article.image}
+                    src={article.imageUrl}
                     alt={article.title}
                     className="w-full h-48 object-cover"
                 />

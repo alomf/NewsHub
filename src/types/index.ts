@@ -6,7 +6,7 @@ export type Article = {
     source: { name: string };
     category: string;
     url: string;
-    image?: string; // Added optional 'image' property
+    imageUrl?: string; // Added optional 'image' property
     publishedAt: string;
   };
 

@@ -46,7 +46,7 @@ export async function fetchNews(category: string = 'all', query: string = '') {
                 source: article.source?.name || 'Unknown Source', // Default source if missing
                 category: category === 'all' ? 'general' : category, // Assign category
                 url: article.url || '#', // Default URL if missing
-                imageUrl: article.image, // Article image URL
+                imageUrl: article.imageUrl, // Article image URL
                 publishedAt: article.publishedAt || new Date().toISOString() // Default to current date if missing
             }))
         };
