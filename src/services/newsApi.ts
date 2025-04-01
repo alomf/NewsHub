@@ -1,7 +1,7 @@
 import type { Article } from '../types';
 
 // API key and base URL for the news API
-const API_KEY = '6808c9079c721b993faa3c842d27e996';
+const API_KEY = import.meta.env.VITE_API_KEY; // Free API key for demo purposes;
 const BASE_URL = 'https://gnews.io/api/v4';
 
 /**
