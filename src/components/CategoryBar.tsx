@@ -7,30 +7,29 @@ interface CategoryBarProps {
     onSelectCategory: (category: Category) => void; // Callback to handle category selection
 }
 
-// List of categories to display in the CategoryBar
+// Updated categories to match GNews API topics
 const categories: Category[] = [
-    'all', 
-    'world', 
-    'nation', 
-    'business', 
-    'technology', 
-    'entertainment', 
-    'sports', 
-    'science', 
-    'health'
+    'all',
+    'world',
+    'nation',
+    'business',
+    'technology',
+    'entertainment',
+    'sports',
+    'science',
+    'health',
 ];
 
-// CategoryBar component
 export function CategoryBar({ selectedCategory, onSelectCategory }: CategoryBarProps) {
     return (
         <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4">
-                {/* Horizontal scrollable category buttons */}
                 <div className="flex items-center gap-4 overflow-x-auto py-3 no-scrollbar">
+                    {/* Render a button for each category */}
                     {categories.map((category) => (
                         <button
-                            key={category} // Unique key for each category
-                            onClick={() => onSelectCategory(category)} // Handle category selection
+                            key={category} // Unique key for each button
+                            onClick={() => onSelectCategory(category)} // Handle button click
                             className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors
                                 ${
                                     selectedCategory === category

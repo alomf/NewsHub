@@ -1,14 +1,14 @@
 // Represents a news article with various metadata
-export interface Article {
-    id: string; // Unique identifier for the article
-    title: string; // Title of the article
-    description: string; // Short description or summary of the article
-    source: string; // Source or publisher of the article
-    category: string; // Category of the article (e.g., 'technology', 'sports')
-    url: string; // URL to the full article
-    imageUrl: string; // URL to the article's image
-    publishedAt: string; // Publication date and time in ISO format
-}
+export type Article = {
+    id: string;
+    title: string;
+    description: string;
+    source: { name: string };
+    category: string;
+    url: string;
+    image?: string; // Added optional 'image' property
+    publishedAt: string;
+  };
 
 // Defines the possible categories for news articles
 export type Category = 

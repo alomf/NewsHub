@@ -3,11 +3,11 @@ import type { Article } from '../types';
 
 // Props interface for the ShareModal component
 interface ShareModalProps {
-    article: Article;
-    onClose: () => void;
+    article: Article; // The article to be shared
+    onClose: () => void; // Function to close the modal
 }
 
-// Custom SVG component for the X logo
+// Custom X (Twitter) logo component
 function XLogo() {
     return (
         <svg
@@ -25,12 +25,13 @@ function XLogo() {
     );
 }
 
-// Main ShareModal component
+// ShareModal component
 export function ShareModal({ article, onClose }: ShareModalProps) {
-    const shareUrl = article.url; // URL to be shared
-    const shareText = `Check out this article: ${article.title}`; // Text to accompany the share
+    // URL and text to be shared
+    const shareUrl = article.url;
+    const shareText = `Check out this article: ${article.title}`;
 
-    // URLs for sharing on different platforms
+    // Share links for different platforms
     const shareLinks = {
         x: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
             shareUrl
@@ -46,11 +47,11 @@ export function ShareModal({ article, onClose }: ShareModalProps) {
             await navigator.clipboard.writeText(shareUrl);
             console.log('URL copied to clipboard');
         } catch (err) {
-            console.error('Failed to copy: ', err);
+            console.error('Failed to copy URL:', err);
         }
     };
 
-    // Function to handle sharing on a specific platform
+    // Function to handle share button clicks
     const handleShareClick = (platform: string, url: string) => {
         window.open(
             url,
@@ -62,7 +63,7 @@ export function ShareModal({ article, onClose }: ShareModalProps) {
     return (
         <div
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-            onClick={onClose} // Close modal when clicking outside
+            onClick={onClose} // Close modal when clicking outside the content
         >
             <div
                 className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4"
@@ -94,7 +95,10 @@ export function ShareModal({ article, onClose }: ShareModalProps) {
                         </button>
                         <button
                             onClick={() =>
-                                handleShareClick('LinkedIn', shareLinks.linkedin)
+                                handleShareClick(
+                                    'LinkedIn',
+                                    shareLinks.linkedin
+                                )
                             }
                             className="p-3 rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                             aria-label="Share on LinkedIn"
@@ -110,7 +114,7 @@ export function ShareModal({ article, onClose }: ShareModalProps) {
                             value={shareUrl}
                             readOnly
                             className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md 
-                                bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
+                       bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
                         />
                         <button
                             onClick={copyToClipboard}
@@ -124,4 +128,4 @@ export function ShareModal({ article, onClose }: ShareModalProps) {
             </div>
         </div>
     );
-}
+};

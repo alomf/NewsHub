@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, Moon, Sun, X } from 'lucide-react';
-import { useDebounce } from '../hooks/useDebounce';
+import { useDebounce } from '../hooks/useDebounce.ts';
 
 interface HeaderProps {
     darkMode: boolean; // Indicates whether dark mode is enabled
@@ -9,9 +9,14 @@ interface HeaderProps {
 }
 
 export function Header({ darkMode, onToggleDarkMode, onSearch }: HeaderProps) {
-    const [searchValue, setSearchValue] = useState(''); // State for the search input value
-    const debouncedSearch = useDebounce(searchValue, 500); // Debounced search value
-    const searchInputRef = useRef<HTMLInputElement>(null); // Ref for the search input element
+    // State to manage the search input value
+    const [searchValue, setSearchValue] = useState('');
+
+    // Debounced version of the search value to reduce frequent updates
+    const debouncedSearch = useDebounce(searchValue, 500);
+
+    // Ref to access the search input element
+    const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Effect to trigger the onSearch callback whenever the debounced search value changes
     useEffect(() => {
@@ -40,6 +45,7 @@ export function Header({ darkMode, onToggleDarkMode, onSearch }: HeaderProps) {
                         <div className="relative">
                             {/* Search Icon */}
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                            
                             {/* Search Input */}
                             <input
                                 ref={searchInputRef}
@@ -49,6 +55,7 @@ export function Header({ darkMode, onToggleDarkMode, onSearch }: HeaderProps) {
                                 onChange={(e) => setSearchValue(e.target.value)}
                                 className="w-full pl-10 pr-10 py-2 bg-gray-100 dark:bg-gray-800 border-0 rounded-full focus:ring-2 focus:ring-blue-500 dark:text-white"
                             />
+                            
                             {/* Clear Button */}
                             {searchValue && (
                                 <button

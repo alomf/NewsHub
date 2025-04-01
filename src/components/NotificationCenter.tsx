@@ -1,6 +1,6 @@
-import React from "react";
-import { Bell, X } from "lucide-react";
-import { format } from "date-fns";
+import React from 'react';
+import { Bell, X } from 'lucide-react';
+import { format } from 'date-fns';
 
 // Define the structure of a notification
 interface Notification {
@@ -11,7 +11,7 @@ interface Notification {
     read: boolean;
 }
 
-// Define the props for the NotificationCenter component
+// Props for the NotificationCenter component
 interface NotificationCenterProps {
     notifications: Notification[];
     onClose: () => void;
@@ -19,10 +19,14 @@ interface NotificationCenterProps {
 }
 
 // NotificationCenter component
-export function NotificationCenter({ notifications, onClose, onMarkAsRead }: NotificationCenterProps) {
+export function NotificationCenter({
+    notifications,
+    onClose,
+    onMarkAsRead,
+}: NotificationCenterProps) {
     return (
         <div className="fixed right-0 top-16 h-screen w-full max-w-sm bg-white dark:bg-gray-800 shadow-lg border-l border-gray-200 dark:border-gray-700">
-            {/* Header section with title and close button */}
+            {/* Header section */}
             <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Bell className="w-5 h-5 text-blue-500" />

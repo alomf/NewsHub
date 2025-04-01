@@ -12,28 +12,23 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     // State to store the current value, initialized from localStorage or the provided initial value.
     const [storedValue, setStoredValue] = useState<T>(() => {
         try {
-            // Attempt to retrieve the item from localStorage.
             const item = window.localStorage.getItem(key);
-            // Parse the item if it exists, otherwise use the initial value.
-            return item ? JSON.parse(item) : initialValue;
+            return item ? JSON.parse(item) : initialValue; // Parse the stored JSON or use the initial value.
         } catch (error) {
-            // Log any errors and fall back to the initial value.
-            console.error(error);
-            return initialValue;
+            console.error('Error reading from localStorage:', error);
+            return initialValue; // Fallback to the initial value in case of an error.
         }
     });
 
-    // Effect to update localStorage whenever the stored value or key changes.
+    // Effect to update localStorage whenever the key or stored value changes.
     useEffect(() => {
         try {
-            // Save the current value to localStorage.
-            window.localStorage.setItem(key, JSON.stringify(storedValue));
+            window.localStorage.setItem(key, JSON.stringify(storedValue)); // Save the value as a JSON string.
         } catch (error) {
-            // Log any errors that occur during the save operation.
-            console.error(error);
+            console.error('Error writing to localStorage:', error);
         }
-    }, [key, storedValue]);
+    }, [key, storedValue]); // Dependencies: re-run effect when key or storedValue changes.
 
-    // Return the stored value and the function to update it as a tuple.
+    // Return the stored value and the setter function as a tuple.
     return [storedValue, setStoredValue] as const;
 }
